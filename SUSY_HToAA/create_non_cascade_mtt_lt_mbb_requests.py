@@ -100,8 +100,8 @@ def create_vbf_ggh_requests():
     }
 
     dataset_name_temps = {
-        'VBF' : 'NonCascade_VBFHToA1A2_A1ToBB_A2ToTauTau_MA1-{__MASS1__}-MA2-{__MASS2__}_Filter_Tune{__TUNE__}_13TeV_madgraph_pythia8',
-        'ggH' : 'NonCascade_ggHToA1A2_A1ToBB_A2ToTauTau_MA1-{__MASS1__}-MA2-{__MASS2__}_Filter_Tune{__TUNE__}_13TeV_madgraph_pythia8'
+        'VBF' : 'NonCascade_VBFHToA1A2_A1ToBB_A2ToTauTau_MA2-{__MASS1__}-MA1-{__MASS2__}_Filter_Tune{__TUNE__}_13TeV_madgraph_pythia8',
+        'ggH' : 'NonCascade_ggHToA1A2_A1ToBB_A2ToTauTau_MA2-{__MASS1__}-MA1-{__MASS2__}_Filter_Tune{__TUNE__}_13TeV_madgraph_pythia8'
     }
 
     # List of several quantities
