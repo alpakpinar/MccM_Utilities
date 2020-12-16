@@ -153,7 +153,7 @@ def create_vbf_ggh_requests():
         r.dump_to_csv()
 
 def main():
-    create_wh_zh_requests()
+    # create_wh_zh_requests()
     create_vbf_ggh_requests()
 
 if __name__ == '__main__':

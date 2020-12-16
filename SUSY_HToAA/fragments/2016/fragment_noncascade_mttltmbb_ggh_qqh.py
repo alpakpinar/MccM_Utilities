@@ -23,6 +23,7 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
                          comEnergy = cms.double(13000.),
                          HepMCFilter = cms.PSet(
                              filterName = cms.string('EmbeddingHepMCFilter'),
+                             filterParameters = cms.PSet(
                                  ElElCut = cms.string('El1.Pt > 22 && El2.Pt > 10 && El1.Eta < 2.6 && El2.Eta < 2.6'),
                                  ElHadCut = cms.string('El.Pt > 22 && Had.Pt > 16 && El.Eta < 2.6 && Had.Eta < 2.7'),
                                  ElMuCut = cms.string('Mu.Pt > 7 && El.Pt > 11 && El.Eta < 2.6 && Mu.Eta < 2.5'),
@@ -37,37 +38,37 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
                                  ),
                                  BosonPDGID = cms.int32(25)
                              )
-                         ),
-                         PythiaParameters = cms.PSet(
-        pythia8CommonSettingsBlock,
-        pythia8CUEP8M1SettingsBlock,
-        pythia8PSweightsSettingsBlock, 
-        processParameters = cms.vstring(
-            '25:onMode = off',
-            '25:onIfMatch = 15 -15',
-            '35:onMode = off',
-            '35:onIfMatch = 5 -5',
-            'SLHA:minMassSM = 10.',
-            'ResonanceDecayFilter:filter = on',
-            'ResonanceDecayFilter:exclusive = on', #off: require at least the specified number of daughters, on: require exactly the specified number of daughters
-            'ResonanceDecayFilter:eMuAsEquivalent    = off', #on: treat electrons and muons as equivalent
-            'ResonanceDecayFilter:eMuTauAsEquivalent = off',  #on: treat electrons, muons , and taus as equivalent
-            'ResonanceDecayFilter:allNuAsEquivalent  = on',  #on: treat all three neutrino flavours as equivalent
-            'ResonanceDecayFilter:udscAsEquivalent   = off', #on: treat u,d,s,c quarks as equivalent
-            'ResonanceDecayFilter:udscbAsEquivalent  = off', #on: treat u,d,s,c,b quarks as equivalent
-            #'ResonanceDecayFilter:mothers =', #list of mothers not specified -> count all particles in hard process+resonance decays (better to avoid specifying mothers when including leptons from the lhe in counting, since intermediate resonances are not gauranteed to appear in general
-            #'ResonanceDecayFilter:daughters = 5,5,15,15'
-            #'ResonanceDecayFilter:mothers = 25,35',
-            #'ResonanceDecayFilter:daughters = 15,15,5,5'
-            'ResonanceDecayFilter:mothers = 25',
-            'ResonanceDecayFilter:daughters = 15,15'
-        ),
-        parameterSets = cms.vstring('pythia8CommonSettings',
-                                    'pythia8CUEP8M1Settings',
-                                    'pythia8PSweightsSettings',
-                                    'processParameters'
-                                    )
-        )
+                        ),
+                        PythiaParameters = cms.PSet(
+                                pythia8CommonSettingsBlock,
+                                pythia8CUEP8M1SettingsBlock,
+                                pythia8PSweightsSettingsBlock, 
+                                processParameters = cms.vstring(
+                                    '25:onMode = off',
+                                    '25:onIfMatch = 15 -15',
+                                    '35:onMode = off',
+                                    '35:onIfMatch = 5 -5',
+                                    'SLHA:minMassSM = 10.',
+                                    'ResonanceDecayFilter:filter = on',
+                                    'ResonanceDecayFilter:exclusive = on', #off: require at least the specified number of daughters, on: require exactly the specified number of daughters
+                                    'ResonanceDecayFilter:eMuAsEquivalent    = off', #on: treat electrons and muons as equivalent
+                                    'ResonanceDecayFilter:eMuTauAsEquivalent = off',  #on: treat electrons, muons , and taus as equivalent
+                                    'ResonanceDecayFilter:allNuAsEquivalent  = on',  #on: treat all three neutrino flavours as equivalent
+                                    'ResonanceDecayFilter:udscAsEquivalent   = off', #on: treat u,d,s,c quarks as equivalent
+                                    'ResonanceDecayFilter:udscbAsEquivalent  = off', #on: treat u,d,s,c,b quarks as equivalent
+                                    #'ResonanceDecayFilter:mothers =', #list of mothers not specified -> count all particles in hard process+resonance decays (better to avoid specifying mothers when including leptons from the lhe in counting, since intermediate resonances are not gauranteed to appear in general
+                                    #'ResonanceDecayFilter:daughters = 5,5,15,15'
+                                    #'ResonanceDecayFilter:mothers = 25,35',
+                                    #'ResonanceDecayFilter:daughters = 15,15,5,5'
+                                    'ResonanceDecayFilter:mothers = 25',
+                                    'ResonanceDecayFilter:daughters = 15,15'
+                                ),
+                                parameterSets = cms.vstring('pythia8CommonSettings',
+                                                            'pythia8CUEP8M1Settings',
+                                                            'pythia8PSweightsSettings',
+                                                            'processParameters'
+                                                            )
+                                )
                          )
 
 ProductionFilterSequence = cms.Sequence(generator)
