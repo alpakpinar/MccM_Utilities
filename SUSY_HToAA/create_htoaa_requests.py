@@ -76,12 +76,12 @@ def create_vbf_ggh_requests():
     # Gridpack locations 
     gridpack_location_temps = {
         'VBF': {
-            2016: '/cvmfs/cms.cern.ch/phys_generator/gridpacks/slc6_amd64_gcc630/13TeV/madgraph/V5_2.6.5/vbfh01_M125_Toa01a01_M{__MASS__}_Tobbtautau/v1/vbfh01_M125_Toa01a01_M{__MASS__}_Tobbtautau_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz',
+            2016: '/cvmfs/cms.cern.ch/phys_generator/gridpacks/slc6_amd64_gcc630/13TeV/madgraph/V5_2.6.5/vbfh01_M125_Toa01a01_M{__MASS__}_Tobbtautau/v2/vbfh01_M125_Toa01a01_M{__MASS__}_Tobbtautau_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz',
             2017: '/cvmfs/cms.cern.ch/phys_generator/gridpacks/2017/13TeV/madgraph/V5_2.6.5/vbfh01_M125_Toa01a01_M{__MASS__}_Tobbtautau/v1/vbfh01_M125_Toa01a01_M{__MASS__}_Tobbtautau_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz',
             2018: '/cvmfs/cms.cern.ch/phys_generator/gridpacks/2017/13TeV/madgraph/V5_2.6.5/vbfh01_M125_Toa01a01_M{__MASS__}_Tobbtautau/v1/vbfh01_M125_Toa01a01_M{__MASS__}_Tobbtautau_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz'
         },
         'ggH': {
-            2016: '/cvmfs/cms.cern.ch/phys_generator/gridpacks/slc6_amd64_gcc630/13TeV/madgraph/V5_2.6.5/ggh01_M125_Toa01a01_M{__MASS__}_Tobbtautau/v1/ggh01_M125_Toa01a01_M{__MASS__}_Tobbtautau_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz',
+            2016: '/cvmfs/cms.cern.ch/phys_generator/gridpacks/slc6_amd64_gcc630/13TeV/madgraph/V5_2.6.5/ggh01_M125_Toa01a01_M{__MASS__}_Tobbtautau/v2/ggh01_M125_Toa01a01_M{__MASS__}_Tobbtautau_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz',
             2017: '/cvmfs/cms.cern.ch/phys_generator/gridpacks/2017/13TeV/madgraph/V5_2.6.5/ggh01_M125_Toa01a01_M{__MASS__}_Tobbtautau/v1/ggh01_M125_Toa01a01_M{__MASS__}_Tobbtautau_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz',
             2018: '/cvmfs/cms.cern.ch/phys_generator/gridpacks/2017/13TeV/madgraph/V5_2.6.5/ggh01_M125_Toa01a01_M{__MASS__}_Tobbtautau/v1/ggh01_M125_Toa01a01_M{__MASS__}_Tobbtautau_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz'
         }
