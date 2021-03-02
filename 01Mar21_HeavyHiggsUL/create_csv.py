@@ -29,8 +29,7 @@ def create_csv():
     width_points = [0.025, 0.1, 0.25] 
     modes = ['ljets', 'll']
 
-    # TODO: Need to update with actual cvmfs paths once they're uploaded
-    gridpack_template = 'heavyhiggs_13TeV_{__MODE__}_m{__MASS__}_w{__WIDTH__}_{__INT__}_{__PSUEDO__}_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz'
+    gridpack_template = '/cvmfs/cms.cern.ch/phys_generator/gridpacks/UL/13TeV/madgraph/V5_2.6.5/heavyhiggs_13TeV_{__MODE__}_m{__MASS__}_w{__WIDTH__}_{__INT__}_{__PSEUDO__}/v1/heavyhiggs_13TeV_{__MODE__}_m{__MASS__}_w{__WIDTH__}_{__INT__}_{__PSEUDO__}_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz'
 
     dataset_name_templates = {
         'INT' : {
@@ -65,16 +64,16 @@ def create_csv():
                 _width = mass * width
 
                 for _int in ['INT', 'RES']:
-                    for _scalar in ['PSUEDO', 'SCALAR']:
+                    for _scalar in ['PSEUDO', 'SCALAR']:
                         gridpack_path = gridpack_template.format(
                             __MODE__ = mode,
                             __MASS__ = mass,
                             __WIDTH__ = _width,
                             __INT__ = _int,
-                            __PSUEDO__ = _scalar,
+                            __PSEUDO__ = _scalar,
                         )
 
-                        fragment = fragment_temp.format(__GRIDPACK__ = gridpack_path)
+                        fragment = fragment_temp.replace('__GRIDPACK__', gridpack_path)
 
                         dataset_name = dataset_name_templates[_int][mode].format(
                             __SCALAR__ = _scalar.lower(),
