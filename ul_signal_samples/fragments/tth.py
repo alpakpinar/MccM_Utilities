@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
 # link to card:
-# https://github.com/cms-sw/genproductions/blob/master/bin/Powheg/production/2017/13TeV/Higgs/gg_H_quark-mass-effects_NNPDF31_13TeV/gg_H_quark-mass-effects_NNPDF31_13TeV_M125.input
+# https://github.com/cms-sw/genproductions/blob/master/bin/Powheg/production/2017/13TeV/Higgs/ttH_inclusive_hdamp_NNPDF31_13TeV_M125/ttH_inclusive_hdamp_NNPDF31_13TeV_M125.input
 
 externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
     args = cms.vstring('{__GRIDPACK__}'),
@@ -9,7 +9,7 @@ externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),
     scriptName = cms.FileInPath('GeneratorInterface/LHEInterface/data/run_generic_tarball_cvmfs.sh')
-    )
+)
 
 from Configuration.Generator.Pythia8CommonSettings_cfi import *
 from Configuration.Generator.MCTunes2017.PythiaCP5Settings_cfi import *
@@ -26,7 +26,7 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
         pythia8CP5SettingsBlock,
         pythia8PowhegEmissionVetoSettingsBlock,
         processParameters = cms.vstring(
-            'POWHEG:nFinal = 1',   ## Number of final state particles
+            'POWHEG:nFinal = 3',   ## Number of final state particles
                                    ## (BEFORE THE DECAYS) in the LHE
                                    ## other than emitted extra parton
             '25:m0 = 125.0',
@@ -37,31 +37,10 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
           ),
         parameterSets = cms.vstring('pythia8CommonSettings',
                                     'pythia8CP5Settings',
-                                    'pythia8PowhegEmissionVetoSettings',
+				                    'pythia8PowhegEmissionVetoSettings',
                                     'processParameters'
                                     )
+                    )
         )
-                         )
 
-LHEHiggsPtFilter = cms.EDFilter("LHEPtFilter",
-  selectedPdgIds = cms.vint32(25),
-  ptMin=cms.double(135.),
-  ptMax=cms.double(1e10),
-  src=cms.InputTag("externalLHEProducer")
-)
-
-genParticlesForFilter = cms.EDProducer("GenParticleProducer",
-  abortOnUnknownPDGCode = cms.untracked.bool(False),
-  saveBarCodes = cms.untracked.bool(True),
-  src = cms.InputTag("generator", "unsmeared")
-)
-Higgs62pt190 = cms.EDFilter("CandViewSelector",
-    src = cms.InputTag("genParticlesForFilter"),
-    cut = cms.string("(pdgId==25) && (pt>190) && (status==62)")
-)
-filterHiggs62pt190 = cms.EDFilter("CandViewCountFilter",
-    src = cms.InputTag("Higgs62pt190"),
-    minNumber = cms.uint32(1)
-)
-
-ProductionFilterSequence = cms.Sequence(LHEHiggsPtFilter * generator * genParticlesForFilter * Higgs62pt190 * filterHiggs62pt190)
+ProductionFilterSequence = cms.Sequence(generator)

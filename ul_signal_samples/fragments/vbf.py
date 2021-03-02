@@ -1,7 +1,8 @@
 import FWCore.ParameterSet.Config as cms
 
 # Link to card:
-# {__LINK__} 
+# https://github.com/cms-sw/genproductions/blob/master/bin/Powheg/production/2017/13TeV/Higgs/VBF_H_NNPDF31_13TeV/VBF_H_NNPDF31_13TeV_template.input
+
 externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
     args = cms.vstring('{__GRIDPACK__}'),
     nEvents = cms.untracked.uint32(5000),
@@ -28,7 +29,7 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
             'POWHEG:nFinal = 3',   ## Number of final state particles
                                    ## (BEFORE THE DECAYS) in the LHE
                                    ## other than emitted extra parton
-			'SpaceShower:dipoleRecoil = on',
+            'SpaceShower:dipoleRecoil = on',
           	'25:m0 = 125.0',
             '25:onMode = off',
             '25:onIfMatch = 23 23', ## H -> ZZ

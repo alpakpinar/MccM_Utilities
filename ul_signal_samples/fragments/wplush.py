@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
 # link to card:
-# {__LINK__}
+# https://github.com/cms-sw/genproductions/blob/master/bin/Powheg/production/2017/13TeV/Higgs/WplusHJ_HanythingJ_NNPDF31_13TeV/HWplusJ_HanythingJ_NNPDF31_13TeV_M125_Vhadronic.input
 
 externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
     args = cms.vstring('{__GRIDPACK__}'),

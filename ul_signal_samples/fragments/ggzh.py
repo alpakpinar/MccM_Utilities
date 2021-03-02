@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
 # link to card:
-# https://github.com/cms-sw/genproductions/tree/master/bin/Powheg/production/2017/13TeV/Higgs/ggHZ_HanythingJ_NNPDF31_13TeV
+# https://github.com/cms-sw/genproductions/blob/master/bin/Powheg/production/2017/13TeV/Higgs/ggHZ_HanythingJ_NNPDF31_13TeV/ggHZ_HanythingJ_NNPDF31_13TeV_M125_Vhadronic.input
 
 externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
     args = cms.vstring('{__GRIDPACK__}'),
@@ -13,7 +13,7 @@ externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
     
 from Configuration.Generator.Pythia8CommonSettings_cfi import *
 from Configuration.Generator.MCTunes2017.PythiaCP5Settings_cfi import *
-
+from Configuration.Generator.Pythia8PowhegEmissionVetoSettings_cfi import *
 
 generator = cms.EDFilter("Pythia8HadronizerFilter",
                          maxEventsToPrint = cms.untracked.int32(1),
@@ -24,6 +24,7 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
                          PythiaParameters = cms.PSet(
         pythia8CommonSettingsBlock,
         pythia8CP5SettingsBlock,
+        pythia8PowhegEmissionVetoSettingsBlock,
         processParameters = cms.vstring(
             'POWHEG:nFinal = 2',   ## Number of final state particles
                                    ## (BEFORE THE DECAYS) in the LHE
